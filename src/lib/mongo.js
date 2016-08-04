@@ -54,8 +54,11 @@ module.exports = function (amna, log) {
              */
             amna.$mongooseConnection = mongoose.connect(url, {/*options*/}, function (err) {
                 if (err) {
+                    log('error connecting to database', url);
                     throw err;
                 }
+
+                log('successfully connected to database', url);
 
                 /**
                  * Remove the general app blocking error

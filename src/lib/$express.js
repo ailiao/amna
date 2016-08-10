@@ -16,7 +16,7 @@ var methodOverride = require('method-override');
 module.exports = function (amna, log) {
     var app = express();
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json());
+    app.use(bodyParser.json({verify:function(req,res,buf){req.rawBody=buf;}}))
     app.use(methodOverride('_method'));
 
     app.$errors = {};
